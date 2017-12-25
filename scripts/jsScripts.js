@@ -147,12 +147,12 @@ function drawEverything() {
   if(showingWinScreen) {
     canvasContext.fillStyle = 'white';
     if(player1Score >= WINNING_SCORE) {
-      canvasContext.fillText("Left Player Won!", 350, 200);
+      canvasContext.fillText("Left Player Won!", (canvas.width/2)-(canvas.width/40), 200);
     }
     else if(player2Score >= WINNING_SCORE) {
-      canvasContext.fillText("Right Player Won!", 350, 200);
+      canvasContext.fillText("Right Player Won!", (canvas.width/2)-(canvas.width/40), 200);
     }
-    canvasContext.fillText("Click to Continue", 350, 500);
+    canvasContext.fillText("Click to Continue", (canvas.width/2)-(canvas.width/40), 500);
     return;
   }
 
