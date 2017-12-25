@@ -8,6 +8,10 @@ var ballSpeedX = 10;
 var ballSpeedY = 4;
 var ballRadius = 10;
 
+var player1Score = 0;
+var player2Score = 0;
+
+
 var paddle1Y = 250;
 var paddle2Y = 250;
 const PADDLE_THICKNESS = 10;
@@ -77,6 +81,7 @@ function moveEverything() {
           ballSpeedX = - ballSpeedX
         }
           else {
+            player2Score ++;
             ballReset();
         }
     }
@@ -88,6 +93,7 @@ function moveEverything() {
           ballSpeedX = - ballSpeedX
         }
           else {
+            player1Score ++;
             ballReset();
         }
     }
@@ -116,6 +122,9 @@ function drawEverything() {
   // red ball
   colorCircle(ballX, ballY, 10, 'white')
 
+  // Text for scores
+  canvasContext.fillText(player1Score, 100, 100);
+  canvasContext.fillText(player2Score, 600, 100);
 }
 
 // draw and color a circle
