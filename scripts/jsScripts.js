@@ -65,11 +65,8 @@ window.onload = function() {
 
 function computerMovement() {
   var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
-  if(paddle2YCenter < ballY - (PADDLE_HEIGHT/4)) {
-    paddle2Y += 8;
-  }
-  else if(paddle2YCenter > ballY + (PADDLE_HEIGHT/4)) {
-    paddle2Y -=8;
+  if(paddle2YCenter != ballY - (PADDLE_HEIGHT/4)) {
+    paddle2Y += (ballY - paddle2YCenter)/2;
   }
   else {
     paddle2Y += 0;
