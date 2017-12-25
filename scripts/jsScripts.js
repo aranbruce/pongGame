@@ -2,7 +2,7 @@
 
 var canvas;
 var canvasContext;
-var ballX;
+var ballX = 50;
 
 // Stops script loading before page has finished loading
 window.onload = function() {
@@ -15,4 +15,6 @@ function drawEverything() {
   console.log("called drawEverything");
   canvasContext.fillStyle = 'black';
   canvasContext.fillRect(0,0,canvas.width,canvas.height);
+  canvasContext.fillStyle = 'white';
+  canvasContext.fillRect(ballX,0,canvas.width,canvas.height);
 }
