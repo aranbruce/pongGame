@@ -4,8 +4,8 @@ var canvas;
 var canvasContext;
 var ballX = 50;
 var ballY = 50;
-var ballSpeedX = 15;
-var ballSpeedY = 6;
+var ballSpeedX = 20;
+var ballSpeedY = 10;
 var ballRadius = 10;
 
 var player1Score = 0;
