@@ -8,6 +8,23 @@ var ballSpeedX = 10;
 var ballSpeedY = 4;
 var ballRadius = 10;
 
+var paddle1Y = 250;
+var paddle2Y = 250;
+const PADDLE_THICKNESS = 10;
+const PADDLE_HEIGHT = 100;
+
+function calculateMousePos(evt) {
+  var rect = canvas.getBoundingClientRect();
+  var root = document.documentElement;
+  var mouseX = evt.clientX - rect.left - root.scrollLeft;
+  var mouseY = evt.clientY - rect.top - root.scrollTop;
+  return {
+    x:mouseX,
+    y:mouseY
+  };
+}
+
+
 // Stops script loading before page has finished loading
 window.onload = function() {
   canvas = document.getElementById('gameCanvas');
@@ -19,6 +36,21 @@ window.onload = function() {
     moveEverything();
     drawEverything();
   }, 1000/framesPerSecond);
+
+  //tracking mouse movement
+  canvas.addEventListener('mousemove',
+    function(evt) {
+      var mousePos = calculateMousePos(evt);
+      paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
+    });
+}
+
+
+// Reset the ball
+function ballReset() {
+  ballSpeedX = - ballSpeedX;
+  ballX = (canvas.width + ballRadius)/2;
+  ballY = (canvas.height + ballRaduys)/2;
 }
 
 function moveEverything() {
@@ -27,12 +59,24 @@ function moveEverything() {
 
     // ball bounces off left side of canvas
     if(ballX - ballRadius < 0) {
-      ballSpeedX = - ballSpeedX;
+      if(ballY > paddle1Y &&
+        ballY < (paddle1Y + PADDLE_HEIGHT)) {
+          ballSpeedX = - ballSpeedX
+        }
+          else {
+            ballReset();
+        }
     }
 
     // ball bounces off right side of canvas
     if(ballX + ballRadius > canvas.width) {
-      ballSpeedX = - ballSpeedX;
+      if(ballY > paddle2Y &&
+        ballY < (paddle2Y + PADDLE_HEIGHT)) {
+          ballSpeedX = - ballSpeedX
+        }
+          else {
+            ballReset();
+        }
     }
 
     // ball bounces off top of canvas
@@ -50,8 +94,11 @@ function drawEverything() {
   // black background
   colorRect(0,0,canvas.width,canvas.height,'black');
 
-  // left padel
-  colorRect(0,210,10,100,'white');
+  // left paddle
+  colorRect(0,paddle1Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
+
+  // right paddle
+  colorRect(canvas.width-PADDLE_THICKNESS,paddle2Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
 
   // red ball
   colorCircle(ballX, ballY, 10, 'white')
