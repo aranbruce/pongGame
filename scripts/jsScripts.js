@@ -124,7 +124,7 @@ function drawEverything() {
 
   // Text for scores
   canvasContext.fillText(player1Score, 100, 100);
-  canvasContext.fillText(player2Score, 600, 100);
+  canvasContext.fillText(player2Score, canvas.width-100, 100);
 }
 
 // draw and color a circle
