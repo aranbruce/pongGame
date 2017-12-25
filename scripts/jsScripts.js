@@ -65,14 +65,26 @@ window.onload = function() {
 
 function computerMovement() {
   var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
-  if(paddle2YCenter != ballY) {
+
+
+  /*if(paddle2YCenter != ballY) {
     paddle2Y += (ballY - paddle2YCenter)/2;
   }
   else {
     paddle2Y += 0;
   }
-}
+}*/
 
+  if(paddle2YCenter < ballY - 15) {
+    paddle2Y += 10;
+  }
+  else if (paddle2YCenter > ballY +15) {
+    paddle2Y-= 10;
+  }
+
+  else
+  return;
+}
 // Reset the ball
 function ballReset() {
   if(player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
