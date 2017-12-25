@@ -2,6 +2,7 @@
 
 var canvas;
 var canvasContext;
+var ballX;
 
 // Stops script loading before page has finished loading
 window.onload = function() {
