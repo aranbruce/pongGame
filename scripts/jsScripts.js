@@ -45,6 +45,18 @@ window.onload = function() {
     });
 }
 
+function computerMovement() {
+  var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
+  if(paddle2YCenter < ballY - (PADDLE_HEIGHT/4)) {
+    paddle2Y += 8;
+  }
+  else if(paddle2YCenter > ballY + (PADDLE_HEIGHT/4)) {
+    paddle2Y -=8;
+  }
+  else {
+    paddle2Y += 0;
+  }
+}
 
 // Reset the ball
 function ballReset() {
@@ -54,6 +66,7 @@ function ballReset() {
 }
 
 function moveEverything() {
+    computerMovement();
     ballX += ballSpeedX;
     ballY += ballSpeedY;
 
