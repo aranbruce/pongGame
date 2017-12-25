@@ -13,8 +13,10 @@ window.onload = function() {
 
 function drawEverything() {
   console.log("called drawEverything");
-  canvasContext.fillStyle = 'black';
+  canvasContext.fillStyle = 'red';
   canvasContext.fillRect(0,0,canvas.width,canvas.height);
   canvasContext.fillStyle = 'white';
-  canvasContext.fillRect(ballX,0,canvas.width,canvas.height);
+  canvasContext.fillRect(225,210,200,200);
+  canvasContext.fillStyle = 'red';
+  canvasContext.fillRect(canvas.width/2,200,50,25);
 }
