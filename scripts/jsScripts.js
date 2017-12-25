@@ -186,3 +186,21 @@ function colorRect(leftX, topY, width, height, drawColor) {
   canvasContext.fillStyle = drawColor;
   canvasContext.fillRect(leftX,topY,width,height);
 }
+
+
+function resize() {
+	// Our canvas must cover full height of screen
+	// regardless of the resolution
+	var width = window.innerWidth;
+
+	// So we need to calculate the proper scaled height
+	// that should work well with every resolution
+	var ratio = canvas.widt/canvas.height;
+	var height = width * ratio;
+
+	canvas.style.width = width+'px';
+	canvas.style.height = height+'px';
+}
+
+window.addEventListener('load', resize, false);
+window.addEventListener('resize', resize, false);
