@@ -136,12 +136,17 @@ function moveEverything() {
     }
 }
 
+function drawNet() {
+  for(var i=0; i<canvas.height; i += 40) {
+    colorRect(canvas.width/2-1,i,2,20,'white')
+  }
+}
+
 function drawEverything() {
   // black background
   colorRect(0,0,canvas.width,canvas.height,'black');
 
-
-  //stop gameplay on win
+  //show win screen
   if(showingWinScreen) {
     canvasContext.fillStyle = 'white';
     if(player1Score >= WINNING_SCORE) {
@@ -153,6 +158,9 @@ function drawEverything() {
     canvasContext.fillText("Click to Continue", 350, 500);
     return;
   }
+
+  //net
+  drawNet();
 
   // left paddle
   colorRect(0,paddle1Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
